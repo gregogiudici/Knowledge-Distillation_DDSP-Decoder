@@ -159,7 +159,7 @@ python src/train.py experiment=ddx7/ddx7_fmflt_flute
 #       instrument: flute
 python src/distillation.py experiment=kd/large2medium/gru2gru_flute
 
-# Experiment: GRU2DDX7
+# Experiment: KD-DDX7 (GRU)
 #       model: DDX7 with fmflt patch
 #       instrument: flute
 python src/distillation.py experiment=kd/hpn2ddx7/gru2ddx7_flute
