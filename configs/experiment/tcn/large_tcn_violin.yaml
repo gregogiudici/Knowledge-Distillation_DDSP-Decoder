@@ -1,0 +1,37 @@
+# @package _global_
+
+# to execute this experiment run:
+# python train.py experiment=example
+
+defaults:
+  - override /data: violin_16000_250.yaml
+  - override /model: tcn/large_tcn_decoder.yaml
+  - override /logger: wandb.yaml
+  - override /callbacks: default.yaml
+  - override /trainer: default.yaml
+
+# all parameters below will be merged with parameters from default configurations set above
+# this allows you to overwrite only specified parameters
+
+tags: ["tcn", "violin","16kHz sr","250 fr","large"]
+
+task_name: "large"
+
+trainer:
+  min_steps: 120000
+  max_steps: 120000
+  #min_epochs: 10
+  #max_epochs: 10
+  gradient_clip_val: 3.0
+
+
+data:
+  batch_size: 16
+
+logger:
+  wandb:
+    name: "large_tcn_violin_16000_250_${now:%Y-%m-%d}_${now:%H-%M-%S}"
+    tags: ${tags}
+    group: "decoders"
+  aim:
+    experiment: "audio_generation"

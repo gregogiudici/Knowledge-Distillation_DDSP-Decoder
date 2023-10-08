@@ -1,0 +1,70 @@
+_target_: src.tasks.lightning_distillation.KnowledgeDistillationTask
+
+path: ${oc.env:LARGE_TCN_FLUTE_16000_250}
+
+preprocessor:
+  _target_: src.data.preprocessor.F0LoudnessRMSPreprocessor
+
+teacher_decoder:
+  _target_: src.models.tcn_decoder.TCNdecoder
+  in_channels: 128 # REMEMBER: TCN in_channels = in_channels*n_input_features
+  hidden_channels: 256
+  out_channels: 256
+  n_blocks: 9
+  kernel_size: 3
+  stride: 1
+  dilation_base: 2
+  apply_padding: True
+  deploy_residual: True
+  input_keys: ['f0_scaled','loudness_scaled']
+  input_sizes: [1,1]
+  output_keys: ['amplitude','harmonic_distribution','noise_bands']
+  output_sizes: [1,100,65]
+
+teacher_synth: 
+  _target_: src.synths.hpn_synth.HpNSynth
+  sample_rate: 16000
+  block_size: 64
+  reverb_scale: 1
+
+student_decoder:
+  _target_: src.models.tcn_decoder.TCNdecoder
+  in_channels: 64 # REMEMBER: TCN in_channels = in_channels*n_input_features
+  hidden_channels: 128
+  out_channels: 128
+  n_blocks: 3
+  kernel_size: 3
+  stride: 1
+  dilation_base: 2
+  apply_padding: True
+  deploy_residual: True
+  input_keys: ['f0_scaled','loudness_scaled']
+  input_sizes: [1,1]
+  output_keys: ['amplitude','harmonic_distribution','noise_bands']
+  output_sizes: [1,100,65]
+
+student_synth: 
+  _target_: src.synths.hpn_synth.HpNSynth
+  sample_rate: 16000
+  block_size: 64
+  reverb_scale: 1
+
+criterion: 
+  _target_: src.loss_functions.loss_functions.rec_loss
+  scales: [2048, 1024, 512, 256, 128, 64]
+  overlap: 0.75
+
+optimizer:
+  _target_: torch.optim.AdamW
+  _partial_: True
+  lr: 0.001
+
+scheduler:
+  _target_: torch.optim.lr_scheduler.ExponentialLR
+  _partial_: True
+  gamma: 0.98
+  verbose: True
+
+scheduler_steps: 10000
+
+distill_weights_update: 1

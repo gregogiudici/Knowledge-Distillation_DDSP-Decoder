@@ -1,0 +1,6 @@
+# https://lightning.ai/docs/pytorch/stable/api/lightning.pytorch.callbacks.Callback.html
+
+test_metrics:
+  _target_: src.callbacks.test_metric_callback.TestMetricsCallback
+  mode_lsd: 'mean'
+  mode_flux: 'mean'

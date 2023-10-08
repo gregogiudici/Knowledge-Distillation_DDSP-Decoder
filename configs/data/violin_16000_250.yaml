@@ -1,0 +1,9 @@
+_target_: src.data.lightning_datamodule.DecoderDataModule
+data_dir: ${paths.data_dir}/data
+instrument: violin
+sample_rate: 16000
+frame_rate: 250
+audio_length: 4
+batch_size: 16
+num_workers: 0
+pin_memory: False
