@@ -145,6 +145,11 @@ LARGE_GRU_FLUTE_16000_250="${ROOT}/logs/large/runs/1999-12-31_00-00-00/epoch_000
 #       model: GRUdecoder
 #       instrument: flute
 python src/train.py experiment=gru/medium_gru_flute
+
+# Experiment: DDX7
+#       model: DDX7 with fmflt patch
+#       instrument: flute
+python src/train.py experiment=ddx7/ddx7_fmflt_flute
 ```
 ### 4. Train STUDENT with Knowledge Distillation
 ```bash
@@ -153,4 +158,9 @@ python src/train.py experiment=gru/medium_gru_flute
 #       model: GRUdecoder
 #       instrument: flute
 python src/distillation.py experiment=kd/large2medium/gru2gru_flute
+
+# Experiment: GRU2DDX7
+#       model: DDX7 with fmflt patch
+#       instrument: flute
+python src/distillation.py experiment=kd/hpn2ddx7/gru2ddx7_flute
 ```
