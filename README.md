@@ -42,8 +42,8 @@ Two types of experiments were performed in order to analyze the effectiveness of
 
 ```bash
 # Clone project
-git clone git@github.com:gregogiudici/Knowledge-Distillation_DDSP-Decoders.git
-cd Knowledge-Distillation_DDSP-Decoders
+git clone git@github.com:gregogiudici/Knowledge-Distillation_DDSP-Decoder.git
+cd Knowledge-Distillation_DDSP-Decoder
 
 # Create conda environment
 conda create -n myenv python=3.9
@@ -59,6 +59,9 @@ pip install -r requirements.txt
 cd extensions/cauchy/ 
 python setup.py install
 ```
+#### ATTENTION:
+Remember to <ins>configure</ins> the development environment (**.env**) file: this file is used to pass environment variables for the proper operation of this project.
+
 ## Dataset generation
 
 We used the [URMP](https://labsites.rochester.edu/air/projects/URMP.html) dataset to train and test the models.
