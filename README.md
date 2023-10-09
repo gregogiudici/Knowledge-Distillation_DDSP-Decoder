@@ -132,7 +132,7 @@ Choose experiment configuration from [configs/experiment/](configs/experiment/)
 python src/train.py experiment=gru/large_gru_flute
 ```
 ### 2. Add TEACHER checkpoint to your .env file
-This is necessary for
+This is necessary for the Knowledge Distillation since you have to indicate where the pre-trained teacher model is located.
 ```bash
 LARGE_GRU_FLUTE_16000_250="${ROOT}/logs/large/runs/1999-12-31_00-00-00/checkpoints/epoch_000.ckpt"
 
