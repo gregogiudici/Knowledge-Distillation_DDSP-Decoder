@@ -126,7 +126,7 @@ if [ $KD -eq 0 ]; then
   # Usage: run_fad_on_file.sh [FILEPATH] [EXP. ID] [BACKGROUND DISTR.] [RESULTS FILE]
   echo "Compute Reference Audio: ${INSTRUMENT^^}_${SR_FR}"
   source scripts/fad/run_fad_on_file.sh \
-      ${!MODEL_PATH%/*}/results_val_test/${INSTRUMENT}_ref_test.wav \
+      ${!MODEL_PATH%/*/*}/results_val_test/${INSTRUMENT}_ref_test.wav \
       ${INSTRUMENT}_ref_${SR} \
       ${INSTRUMENT}_background_${SR} \
       ${RESULT_FILE}
@@ -136,7 +136,7 @@ if [ $KD -eq 0 ]; then
   echo "Compute Synthesized Audio: ${DECODER^^}_${INSTRUMENT^^}_${SR_FR}"
 
   source scripts/fad/run_fad_on_file.sh \
-      ${!MODEL_PATH%/*}/results_val_test/${INSTRUMENT}_synth_test.wav \
+      ${!MODEL_PATH%/*/*}/results_val_test/${INSTRUMENT}_synth_test.wav \
       ${EXPERIMENT_NAME} \
       ${INSTRUMENT}_background_${SR} \
       ${RESULT_FILE}

@@ -7,7 +7,3 @@ statistics generated on a large set of clean music (e.g. the training set). This
 reference-free metric which can be used to score an an evaluation set where the ground
 truth reference audio is not available.
 
-### How to calculate:
-
-1
-
