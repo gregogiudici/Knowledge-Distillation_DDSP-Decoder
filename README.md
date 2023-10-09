@@ -134,7 +134,7 @@ python src/train.py experiment=gru/large_gru_flute
 ### 2. Add TEACHER checkpoint to your .env file
 This is necessary for
 ```bash
-LARGE_GRU_FLUTE_16000_250="${ROOT}/logs/large/runs/1999-12-31_00-00-00/epoch_000.ckpt"
+LARGE_GRU_FLUTE_16000_250="${ROOT}/logs/large/runs/1999-12-31_00-00-00/checkpoints/epoch_000.ckpt"
 
 ```
 
