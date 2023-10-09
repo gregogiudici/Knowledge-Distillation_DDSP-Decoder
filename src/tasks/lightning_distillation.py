@@ -64,7 +64,7 @@ class KnowledgeDistillationTask(LightningModule):
 
         # load teacher
         print(f">>>>>>> LOADING TEACHER MODEL: {path} <<<<<<<<<<\n")
-        state_dict = torch.load(os.path.join(path, "checkpoints/best.ckpt"))       
+        state_dict = torch.load(path)       
         self.teacher.load_state_dict(rename_keys(state_dict['state_dict']))
         for param in self.teacher.parameters():
             param.requires_grad = False

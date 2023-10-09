@@ -146,7 +146,7 @@ elif [ $KD -eq 1 ]; then
   # Usage: run_fad_on_file.sh [FILEPATH] [EXP. ID] [BACKGROUND DISTR.] [RESULTS FILE]
   echo "Compute Teacher-Reference Audio: ${INSTRUMENT^^}_${SR_FR}"
   source scripts/fad/run_fad_on_file.sh \
-      ${!MODEL_PATH%/*}/results_val_test/${INSTRUMENT}_ref_teacher.wav \
+      ${!MODEL_PATH%/*/*}/results_val_test/${INSTRUMENT}_ref_teacher.wav \
       "teacher_${INSTRUMENT}_ref_${SR}" \
       ${INSTRUMENT}_background_${SR} \
       ${RESULT_FILE}
@@ -156,7 +156,7 @@ elif [ $KD -eq 1 ]; then
   echo "Compute Teacher-Synthesized Audio: ${DECODER^^}_${INSTRUMENT^^}_${SR_FR}"
 
   source scripts/fad/run_fad_on_file.sh \
-      ${!MODEL_PATH%/*}/results_val_test/${INSTRUMENT}_synth_teacher.wav \
+      ${!MODEL_PATH%/*/*}/results_val_test/${INSTRUMENT}_synth_teacher.wav \
       "teacher_${EXPERIMENT_NAME}" \
       ${INSTRUMENT}_background_${SR} \
       ${RESULT_FILE}
@@ -165,7 +165,7 @@ elif [ $KD -eq 1 ]; then
   # Usage: run_fad_on_file.sh [FILEPATH] [EXP. ID] [BACKGROUND DISTR.] [RESULTS FILE]
   echo "Compute Student-Reference Audio: ${INSTRUMENT^^}_${SR_FR}"
   source scripts/fad/run_fad_on_file.sh \
-      ${!MODEL_PATH%/*}/results_val_test/${INSTRUMENT}_ref_student.wav \
+      ${!MODEL_PATH%/*/*}/results_val_test/${INSTRUMENT}_ref_student.wav \
       "student_${INSTRUMENT}_ref_${SR}" \
       ${INSTRUMENT}_background_${SR} \
       ${RESULT_FILE}
@@ -175,7 +175,7 @@ elif [ $KD -eq 1 ]; then
   echo "Compute Student-Synthesized Audio: ${DECODER^^}_${INSTRUMENT^^}_${SR_FR}"
 
   source scripts/fad/run_fad_on_file.sh \
-      ${!MODEL_PATH%/*}/results_val_test/${INSTRUMENT}_synth_student.wav \
+      ${!MODEL_PATH%/*/*}/results_val_test/${INSTRUMENT}_synth_student.wav \
       "student_${EXPERIMENT_NAME}" \
       ${INSTRUMENT}_background_${SR} \
       ${RESULT_FILE}
